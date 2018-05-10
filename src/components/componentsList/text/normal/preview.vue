@@ -35,7 +35,7 @@ var config = {
 import preview from '../../../../../static/js/previewConfig.js'
 import entity from './entity.vue'
 
-preview.components.entity = entity
+// preview.components.entity = entity
 export default preview(config)
 
 </script>
