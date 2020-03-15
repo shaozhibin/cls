@@ -43,7 +43,7 @@
 	import Vue from 'vue'
 	/**
 	 * preview 组件集合
-	 * created by szb@163.com 2018.3
+	 * created by szbhome@163.com 2018.3
 	 */
 	import ending from './ending.vue'
 	import glkTextNormal from './componentsList/text/normal/entity.vue'
@@ -117,7 +117,6 @@
 					+ ''
 
 				Vue.set(this.componentsdata, config.id, config)
-
 				if(index !== -1){
 					this.componentslist.splice(index+1, 0, config.id)
 					console.log("componentslist1:", this.componentslist)
@@ -126,13 +125,13 @@
 					console.log("componentslist2:", this.componentslist)
 				}
 
-				// this.$nextTick(function(){
-				// 	this.focusComponent(config.id)
-				// 	this.updateListToBack()
+				this.$nextTick(function(){
+					this.focusComponent(config.id)
+					// this.updateListToBack()
 
-				// 	var index = this.componentslist.indexOf(this.focusid)
-				// 	this.$refs.component[index].$el.scrollIntoView()
-				// })
+					var index = this.componentslist.indexOf(this.focusid)
+					// this.$refs.component[index].$el.scrollIntoView()
+				})
 			}
 		},
 		created() {

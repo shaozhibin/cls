@@ -9,6 +9,8 @@ var component = {
     updateComponent() {
       var _boxdata = JSON.parse(JSON.stringify(this.boxdata))
 
+      console.log('_boxdata:', _boxdata);
+
       window.BUS_BACK.$emit('updateData', this.componentKey, _boxdata, this.parts)
     }
   }

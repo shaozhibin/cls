@@ -329,6 +329,8 @@ export default {
   	},
   	methods: {
   		addComponent(orderdata, familydata) {
+			  console.log('orderdata:', orderdata)
+			  console.log('familydata:', familydata);
 			BUS_BACK.$emit('addComponent', {
 				name: orderdata,
 				template: familydata.template,

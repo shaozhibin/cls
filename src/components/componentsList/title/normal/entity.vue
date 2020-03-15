@@ -23,7 +23,7 @@
 <template>
 	<div class="glk-title-normal">
 		<div class="title">
-			<p>我是标题</p>
+			<p>{{topcomponentdata.data.content}}</p>
 		</div>
 	</div>
 </template>
@@ -32,4 +32,12 @@
 // var entity = require('core/gls/entity')
 
 // return entity()
+
+export default {
+	props: ['topcomponentdata', 'component_id'],
+	mounted() {
+		console.log('topcomponentdatatopcomponentdata:', this.topcomponentdata);
+		console.log('component_id:', this.component_id);
+	}
+}
 </script>

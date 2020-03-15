@@ -100,6 +100,7 @@
 	import settings from './settings/settings.vue'
 
 	import glkTextNormal from './componentsList/text/normal/preview.vue'
+	import glkTitleNormal from './componentsList/title/normal/preview.vue'
 
 
 	window.BUS_BACK = new Vue()
@@ -112,23 +113,23 @@
 				focusid: null,
 				componentsconfig: {},
 				componentsdata: {
-					"glk-text-normal_1522325650466234382": {
-						"styleObj": {
-						"color": "#666",
-						"font-size": "0.24rem",
-						"text-align": "left",
-						"white-space": "pre-wrap",
-						"background-color": "white",
-						"padding-top": "0.1rem",
-						"padding-right": "0.1rem",
-						"border": "0 none"
-						},
-						"data": {
-							"content": "我是正常的text1"
-						},
-						"name": "glk-text-normal",
-						"id": "glk-text-normal_1522325650466234382"
-					},
+					// "glk-text-normal_1522325650466234382": {
+					// 	"styleObj": {
+					// 	"color": "#666",
+					// 	"font-size": "0.24rem",
+					// 	"text-align": "left",
+					// 	"white-space": "pre-wrap",
+					// 	"background-color": "white",
+					// 	"padding-top": "0.1rem",
+					// 	"padding-right": "0.1rem",
+					// 	"border": "0 none"
+					// 	},
+					// 	"data": {
+					// 		"content": "我是文本"
+					// 	},
+					// 	"name": "glk-text-normal",
+					// 	"id": "glk-text-normal_1522325650466234382"
+					// },
 					"glk-title-normal_1522326084314599785": {
 						"styleObj": {
 						"text-align": "center",
@@ -138,7 +139,7 @@
 						"padding-bottom": "0.1rem"
 						},
 						"data": {
-							"content": "没错，我就是标题"
+							"content": "我是标题"
 						},
 						"type": "big",
 						"name": "glk-title-normal",
@@ -160,10 +161,26 @@
 
 				window.BUS_BACK
 					.$on('addComponent', function(config) {
-						console.log("con:", config)
+						console.log("config:", config)
 						console.log('viewarea:', self.$refs.viewarea)
 						// self.$refs.viewarea.addComponent(config)
 						window.GLK_PREVIEW.addComponent(config)
+					})
+					.$on('updateData', function(key, data, isParts) {
+						var target = self.componentsdata[self.focusid]
+
+						if(isParts){
+							var _aa = isParts.split('.')
+							for(var i = 0, l = _aa.length;i<l;i++){
+								target = target[_aa[i]]
+							}
+						}
+
+						Vue.set(target.data, key, data)
+
+						var config = self.componentsdata[self.focusid]
+
+						// self.$refs.viewarea.$refs.view.contentWindow.GLK_PREVIEW.updateComponent(config)
 					})
 			},
 			addComponent1(config) {
@@ -185,6 +202,8 @@
 						// settings: fml.vars.PAGES_SETTINGS
 					}
 
+					console.log('config111:', config);
+
 					// mSelf.$refs.viewarea.$refs.view.contentWindow.GLK_PREVIEW.initData(config)
 				}
 			}
@@ -192,6 +211,9 @@
 		created() {
 			this.setEvents()
 			this.setBackFn()
+		},
+		mounted() {
+			console.log('componentsdata1111:', this.componentsdata);
 		}
 	}
 </script>

@@ -19,8 +19,7 @@
 
 <template>
 <div class="glk-text-normal">
-	<div>text</div>
-	<!-- <div class="text" v-html="componentdata.data.content"></div> -->
+	<div class="text" v-html="topcomponentdata.name"></div>
 </div>
 <!-- <div class="glk-text-normal markdown" :style="componentdata.styleObj">
 	<div class="text" v-html="componentdata.data.content"></div>
@@ -30,11 +29,11 @@
 <script>
 import entity from '../../../../../static/js/componentEntity.js'
 
-let vmConfig = {
-	created() {
-		console.log('componentdataVm', this.componentdata)
+export default {
+	props: ['topcomponentdata', 'component_id'],
+	mounted() {
+		console.log('topcomponentdatatopcomponentdata:', this.topcomponentdata);
+		console.log('component_id:', this.component_id);
 	}
 }
-
-export default entity(vmConfig)
 </script>

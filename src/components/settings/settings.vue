@@ -99,6 +99,7 @@
 			}
 		},
 		mounted() {
+			
 			console.log('settingsdata:', this.settingsdata)
 		}
 	}

@@ -11,13 +11,21 @@
 </template>
 <script>
 import settingscontent from '../componentConfig/content.vue'
+import settingstext from '../componentConfig/text.vue'
 export default {
   components: {
-    settingscontent
+    settingscontent,
+    settingstext
   },
   props: ['areadata', 'parts'],
+  metheds: {
+
+  },
   created() {
   	console.log('areadata:', this.areadata)
+  },
+  mounted() {
+
   }
 }
 
